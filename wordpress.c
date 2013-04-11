@@ -15,6 +15,7 @@ PHP_MINFO_FUNCTION(wordpress);
 
 static function_entry wordpress_functions[] = {
 	PHP_FE(wp_load, NULL)
+	PHP_FE(display_header,NULL)
 	{NULL, NULL, NULL}
 };
 
@@ -37,9 +38,11 @@ zend_module_entry wordpress_module_entry = {
 
 PHP_INI_BEGIN()
 PHP_INI_ENTRY("ABSPATH","/var/www",PHP_INI_ALL,NULL)
+PHP_INI_ENTRY("WPCONFIG","wp-config.php",PHP_INI_ALL,NULL)
 PHP_INI_ENTRY("WPADMIN","wp-admin",PHP_INI_ALL,NULL)
 PHP_INI_ENTRY("WPINC","wp-includes",PHP_INI_ALL,NULL)
 PHP_INI_ENTRY("WPLOGIN","wp-login",PHP_INI_ALL,NULL)
+PHP_INI_ENTRY("WPCONTENT","wp-content",PHP_INI_ALL,NULL)
 PHP_INI_ENTRY("VERSION","3.5",PHP_INI_ALL,NULL)
 PHP_INI_ENTRY("WP_MEMORY_LIMIT","40M",PHP_INI_ALL,NULL)
 PHP_INI_ENTRY("WP_MAX_MEMORY_LIMIT","256M",PHP_INI_ALL,NULL)
@@ -81,4 +84,13 @@ PHP_FUNCTION(wp_load)
     RETURN_STRING(pszAbsPath, 1);
 }
 
+PHP_FUNCTION(display_header)
+{
+}
+
+void setup_config()
+{
+    wp_check_php_mysql_versions();
+    wp_load_translations_early();
+}
 
