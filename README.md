@@ -13,3 +13,10 @@ http://www.dreamcode.net/forums/topic/117329-building-php-extension-using-c/
 <p>See wordpress.png file above</p>
 <img src="http://github.com/patrickingle/wordpress-php-extension/blob/master/wordpress.png">
 
+
+<h2>Reasons for this project</h2>
+<ul>
+<li>Make Wordpress Core run/execute faster</li>
+<li>Add configuration customization for config and admin paths, to thwart DDOS attacks</li>
+<li>Prevent inadvertent hacking of the Wordpress Core</li>
+</ul>
