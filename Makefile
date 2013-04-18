@@ -11,7 +11,8 @@ SHLIB_DL_SUFFIX_NAME = so
 ZEND_EXT_TYPE = zend_extension
 RE2C = re2c
 AWK = nawk
-shared_objects_wordpress = wordpress.lo
+WORDPRESS_SHARED_LIBADD = -lstdc++
+shared_objects_wordpress = wordpress.lo wordpress.lo
 PHP_PECL_EXTENSION = wordpress
 PHP_MODULES = $(phplibdir)/wordpress.la
 PHP_ZEND_EX =
@@ -28,8 +29,8 @@ CFLAGS = -g -O2
 CFLAGS_CLEAN = $(CFLAGS)
 CPP = cc -E
 CPPFLAGS = -DHAVE_CONFIG_H
-CXX =
-CXXFLAGS =
+CXX = g++
+CXXFLAGS = -g -O2
 CXXFLAGS_CLEAN = $(CXXFLAGS)
 EXTENSION_DIR = /usr/lib/php5/20090626
 PHP_EXECUTABLE = /usr/bin/php
@@ -163,6 +164,8 @@ distclean: clean
 .NOEXPORT:
 wordpress.lo: /home/dolphin/php-5.3.10/ext/wordpress/wordpress.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/dolphin/php-5.3.10/ext/wordpress $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/dolphin/php-5.3.10/ext/wordpress/wordpress.c -o wordpress.lo 
+wordpress.lo: /home/dolphin/php-5.3.10/ext/wordpress/wordpress.cc
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/home/dolphin/php-5.3.10/ext/wordpress $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /home/dolphin/php-5.3.10/ext/wordpress/wordpress.cc -o wordpress.lo 
 $(phplibdir)/wordpress.la: ./wordpress.la
 	$(LIBTOOL) --mode=install cp ./wordpress.la $(phplibdir)
 

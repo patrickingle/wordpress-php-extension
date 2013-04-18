@@ -1,5 +1,7 @@
 wordpress.lo: /home/dolphin/php-5.3.10/ext/wordpress/wordpress.c
 	$(LIBTOOL) --mode=compile $(CC)  -I. -I/home/dolphin/php-5.3.10/ext/wordpress $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /home/dolphin/php-5.3.10/ext/wordpress/wordpress.c -o wordpress.lo 
+wordpress.lo: /home/dolphin/php-5.3.10/ext/wordpress/wordpress.cc
+	$(LIBTOOL) --mode=compile $(CXX)  -I. -I/home/dolphin/php-5.3.10/ext/wordpress $(COMMON_FLAGS) $(CXXFLAGS_CLEAN) $(EXTRA_CXXFLAGS)  -c /home/dolphin/php-5.3.10/ext/wordpress/wordpress.cc -o wordpress.lo 
 $(phplibdir)/wordpress.la: ./wordpress.la
 	$(LIBTOOL) --mode=install cp ./wordpress.la $(phplibdir)
 
